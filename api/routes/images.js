@@ -84,4 +84,24 @@ router.post("/", upload.single("image"), (req, res, next) => {
     });
 });
 
+// Delete Image
+router.delete("/:imageId", (req, res, next) => {
+  const id = req.params.imageId;
+  Image.remove({ _id: id })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "Image deleted",
+        request: {
+          type: "POST",
+          url: "http://localhost:5000/images/",
+        },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+});
+
 module.exports = router;
