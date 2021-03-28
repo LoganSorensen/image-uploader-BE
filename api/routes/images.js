@@ -33,6 +33,26 @@ const upload = multer({
 
 const Image = require("../models/image");
 
+// Get All Images
+router.get("/", (req, res, next) => {
+  Image.find()
+    .select("_id image")
+    .exec()
+    .then((docs) => {
+      const response = {
+        count: docs.length,
+        images: docs.map((doc) => {
+          return doc;
+        }),
+      };
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+});
+
 // Get Image by ID
 router.get("/:imageId", (req, res, next) => {
   const id = req.params.imageId;
