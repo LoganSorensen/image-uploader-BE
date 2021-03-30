@@ -10,7 +10,7 @@ const imageRoutes = require("./api/routes/images");
 
 mongoose.connect(
   "mongodb+srv://LoganSorensen:" +
-    "005$W^ao&q@d" +
+    process.env.MONGO_ATLAS_PW +
     "@node-rest-shop.gx93l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
