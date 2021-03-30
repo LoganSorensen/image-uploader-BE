@@ -64,7 +64,7 @@ router.get("/:imageId", (req, res, next) => {
           image: doc,
           request: {
             type: "POST",
-            url: "http://localhost:5000/images/",
+            url: "https://lsorensen-image-uploader.herokuapp.com/images/",
           },
         });
       } else {
@@ -94,7 +94,7 @@ router.post("/", upload.single("image"), (req, res, next) => {
         message: "Image uploaded successfully",
         request: {
           type: "GET",
-          url: `http://localhost:5000/images/${result._id}`,
+          url: `https://lsorensen-image-uploader.herokuapp.com/images/${result._id}`,
         },
       });
     })
@@ -114,7 +114,7 @@ router.delete("/:imageId", (req, res, next) => {
         message: "Image deleted",
         request: {
           type: "POST",
-          url: "http://localhost:5000/images/",
+          url: "https://lsorensen-image-uploader.herokuapp.com/images/",
         },
       });
     })
